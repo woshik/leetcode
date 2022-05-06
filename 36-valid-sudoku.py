@@ -1,23 +1,22 @@
 class Solution:
     def isValidSudoku(self, board):
-        for row in range(len(board)):
-          for column in range(len(board)):
+        list = range(9)
+        
+        for row in list:
+          for column in list:
             if board[row][column] != ".":
-              for count in range(len(board)):
+              for count in list:
                 
-                if count != column:
-                  if board[row][count] == board[row][column]:
+                if count != column and board[row][count] == board[row][column]:
                     return False
 
-                if count != row:
-                  if board[count][column] == board[row][column]:
+                if count != row and board[count][column] == board[row][column]:
                     return False
                 
                 subBoxRow = ((row//3) * 3) + (count//3)
                 subBoxColumn = ((column//3) * 3) + (count%3)
 
-                if subBoxRow != row or subBoxColumn != column:
-                  if board[subBoxRow][subBoxColumn] == board[row][column]:
+                if (subBoxRow != row or subBoxColumn != column) and board[subBoxRow][subBoxColumn] == board[row][column]:
                     return False
         
         return True
