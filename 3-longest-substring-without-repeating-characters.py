@@ -13,6 +13,20 @@ class Solution:
           
         return largestStringCount
 
-s = Solution()
+class Solution2:
+    def lengthOfLongestSubstring(self, s):
+        leftPointer, largestStringCount = 0, 0
+        hashMap = {}
 
-print(s.lengthOfLongestSubstring("pwwkew"))
+        for rightPointer in range(len(s)):
+          if hashMap.get(s[rightPointer]) != None:
+            leftPointer = max(hashMap[s[rightPointer]] + 1, leftPointer)
+          
+          largestStringCount = max(largestStringCount, rightPointer-leftPointer+1)
+          hashMap[s[rightPointer]] = rightPointer
+                    
+        return largestStringCount
+
+s = Solution2()
+
+print(s.lengthOfLongestSubstring("abcabcbb"))
