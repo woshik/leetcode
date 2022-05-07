@@ -14,7 +14,7 @@ class Solution:
         if tempInput == tempInput[::-1]:
           container.append(tempInput)
           self.calculatePartition(sequence[index:], container, result)
-          container.remove(tempInput)
+          container.pop()
         
 s = Solution()
 
